@@ -21,8 +21,8 @@ async function get(loc, encrypted=false) {
 
 function replaceURLs(html, current) {
 	if (html) {
-		html = html.replace(/((|http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?)/g, 'http://192.168.1.100:8080/proxy/$1');
-		html = html.replace(/"\/([^\/].*?)"/g, '"http://192.168.1.100:8080/proxy/'.concat(current).concat('/$1"'));
+		html = html.replace(/((|http|ftp|https):\/\/([\w_-]+(?:(?:\.[\w_-]+)+))([\w.,@?^=%&:/~+#-]*[\w@?^=%&/~+#-])?)/g, 'http://'.concat(config.address).concat(":").concat(config.port).concat('/proxy/$1'));
+		html = html.replace(/"\/([^\/].*?)"/g, '"http://'.concat(config.address).concat(":").concat(config.port).concat('/proxy/').concat(current).concat('/$1"'));
 	}
 	return html;
 }
